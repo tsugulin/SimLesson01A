@@ -9,7 +9,7 @@ void Sink::initialize()
 void Sink::handleMessage(cMessage *msg)
 {
     if (msg->isSelfMessage()) {
-        onWorking = false;
+        onWorking = false;              // 診察終了
         send(new cMessage("call"), "out");                      // 患者の処置が終わったので，次の患者を呼び出す
         leadTime.collect(simTime() - msg->getCreationTime());   // リードタイムを記録
         delete msg;                                             // 患者メッセージを削除
